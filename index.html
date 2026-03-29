@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>🐛 Debugger's Nightmare IDE</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="title">🐛 Debugger's Nightmare - Sarcastic IDE</div>
+  <div class="headerRight">
+    <div class="modeSwitch">
+      <label for="modeSelect">Mode:</label>
+      <select id="modeSelect">
+        <option value="nightmare" selected>☠️ Nightmare Mode</option>
+        <option value="zen">🧘 Zen Mode</option>
+      </select>
+    </div>
+    <div class="timer" id="timerControl" title="Click to set timer (max 15 minutes)">⏳ Timer: <span id="countdown">15s</span></div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="editorPane">
+    <div class="editorHeader">
+      <div class="editorToolsLeft">
+        <select id="langSelect">
+          <option value="javascript">JavaScript</option>
+          <option value="python" selected>Python</option>
+          <option value="cpp">C++</option>
+          <option value="java">Java</option>
+        </select>
+        <div class="fileMenuWrap">
+          <button id="fileMenuBtn" class="fileMenuBtn" type="button">File</button>
+          <div id="fileMenu" class="fileMenu" hidden>
+            <button id="newFileBtn" class="fileMenuItem" type="button">
+              <span>New</span><kbd>Ctrl + N</kbd>
+            </button>
+            <button id="openFileBtn" class="fileMenuItem" type="button">
+              <span>Open</span><kbd>Ctrl + O</kbd>
+            </button>
+            <button id="openFolderBtn" class="fileMenuItem" type="button">
+              <span>Open Folder</span><kbd>Ctrl + Shift + O</kbd>
+            </button>
+            <button id="saveFileBtn" class="fileMenuItem" type="button">
+              <span>Save</span><kbd>Ctrl + S</kbd>
+            </button>
+            <button id="saveAsFileBtn" class="fileMenuItem" type="button">
+              <span>Save As</span><kbd>Ctrl + Shift + S</kbd>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <button id="runBtn" class="primary">Run</button>
+        <button id="giveUpBtn">Give Up</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+    </div>
+    <div id="editor"></div>
+    <div class="consoleLabel">Console</div>
+    <div id="consoleLog">Ready for chaos...</div>
+  </div>
+
+  <div class="outputPane">
+    <strong>Output</strong>
+    <div id="outputBox">Nothing yet. Try running or giving up 😈</div>
+    <div class="inputLabel">Input (stdin)</div>
+    <div class="inputWrap">
+      <textarea id="inputArea" placeholder="Program input, one line per value..."></textarea>
+      <button id="runInputBtn" class="inputRunBtn">Run With Input</button>
+    </div>
+  </div>
+</div>
+
+<div id="loadingOverlay" class="loadingOverlay" aria-hidden="true">
+  <div class="loadingCard hauntedCard">
+    <div class="hauntedSky entryScene" aria-hidden="true">
+      <div class="starfield">
+        <span class="star s1"></span>
+        <span class="star s2"></span>
+        <span class="star s3"></span>
+        <span class="star s4"></span>
+        <span class="star s5"></span>
+        <span class="star s6"></span>
+        <span class="star s7"></span>
+        <span class="star s8"></span>
+        <span class="star s9"></span>
+        <span class="star s10"></span>
+        <span class="star s11"></span>
+        <span class="star s12"></span>
+      </div>
+      <div class="sceneCamera">
+        <div class="pathGlow"></div>
+        <div class="house3d">
+          <div class="roof"></div>
+          <div class="houseBody">
+            <div class="window left"></div>
+            <div class="window right"></div>
+            <div class="doorFrame">
+              <div class="door"></div>
+              <div class="doorLight"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="entryFade"></div>
+    </div>
+    <div class="loadingMeta">
+      <div class="classicSpinner" aria-hidden="true"></div>
+      <div class="loadingTitle">Booting Haunted IDE</div>
+      <div class="loadingText">Summoning compiler spirits...</div>
+      <div class="loadingBar">
+        <div id="loadingBarFill" class="loadingBarFill"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<input id="fileOpenInput" type="file" accept=".py,.js,.mjs,.c,.cc,.cpp,.cxx,.java,.txt" hidden>
+<input id="folderOpenInput" type="file" webkitdirectory directory hidden>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.3/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.3/theme-monokai.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.3/mode-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.3/mode-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.3/mode-c_cpp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.3/mode-java.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
